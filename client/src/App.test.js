@@ -1,9 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import Players from "./components/Players";
+import Switch from "./components/Switch";
+import App from "./App";
+import { render, fireEvent, waitForElement } from "@testing-library/react";
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+test("Players are rendering", () => {
+  const { getByTestId } = render(<Players />);
+  getByTestId("player");
+});
+test("Switch are rendering", () => {
+  const { getByTestId } = render(<Switch />);
+  getByTestId("button");
+});
+
+test("There is a button", () => {
+  const { getByTestId } = render(<Switch />);
+  getByTestId("switch");
 });
